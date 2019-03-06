@@ -27,10 +27,11 @@
         margin: 10mm auto;
         border: 1px #D3D3D3 solid;
         background: white;
+        -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
     }
 
     .blocks {
-        /*padding: 1cm;*/
         height: 257mm;
         margin: 0;
     }
@@ -44,8 +45,28 @@
         html, body {
             font-family: Arial;
             width: 210mm;
-            height: 297mm;
+            max-height: 297mm;
         }
+
+        .mx-input {
+            height: 28px !important;
+            font-size: 12px !important;
+            color: $black !important;
+            border-radius: 0px !important;
+            background-color: $white !important;
+            border: 1px solid $black !important;
+            margin-left: 2px !important;
+            box-shadow: none !important;
+
+            &-append {
+                display: none;
+            }
+        }
+
+        .section-container {
+            margin-top: -1px;
+        }
+
         .blocks {
             margin: 0;
             border: initial;

@@ -10,7 +10,7 @@
                     <date-picker v-model="time1" lang="en" :not-before="new Date()" format="DD.MM.YYYY"
                                  width="130px"></date-picker>
                     bis
-                    <date-picker v-model="time1" lang="en" :not-before="new Date()" format="DD.MM.YYYY"
+                    <date-picker v-model="time2" lang="en" :not-before="new Date()" format="DD.MM.YYYY"
                                  width="130px"></date-picker>
                 </p>
                 <p class="abteilung">Abteilung oder Arbeitsgebiet:
@@ -48,7 +48,7 @@
             <div class="sign-wrapper">
                 <div class="sign-left signed">
                     <p>Datum:
-                        <date-picker v-model="time1" lang="en" :not-before="new Date()"
+                        <date-picker v-model="time3" lang="en" :not-before="new Date()"
                                      format="DD.MM.YYYY" width="130px"></date-picker>
                     </p>
                     <p class="sign">
@@ -57,7 +57,7 @@
                 </div>
                 <div class="sign-right signed">
                     <p>Datum:
-                        <date-picker v-model="time1" lang="en" :not-before="new Date()"
+                        <date-picker v-model="time4" lang="en" :not-before="new Date()"
                                      format="DD.MM.YYYY" width="130px"></date-picker>
                     </p>
                     <p class="sign">
@@ -84,6 +84,7 @@
                 time1: '',
                 time2: '',
                 time3: '',
+                time4: '',
                 // custom lang
                 lang: {
                     days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
@@ -128,7 +129,6 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
     @import "mixins";
-
 
     h3 {
         margin: 40px 0 0;
@@ -180,7 +180,7 @@
                 .ausbildungnachweis {
                     .ausbildung-box {
                         text-align: center;
-                        width: 40px;
+                        width: 60px;
                     }
                 }
 
@@ -191,7 +191,7 @@
 
                     .ausjahr-box {
                         text-align: center;
-                        width: 40px;
+                        width: 25px;
                     }
                 }
 
@@ -224,7 +224,7 @@
                     width: 100%;
                     height: 228px;
                     $color: $black;
-                    border: 1px solid $color;
+                    border-top: 1px solid $color;
                 }
             }
 
@@ -245,16 +245,8 @@
                 .sign {
                     margin-top: 60px;
                     position: relative;
-                    width: 100%;
-
-                    &::before {
-                        position: absolute;
-                        content: "";
-                        background-color: $black;
-                        width: 95%;
-                        top: 0px;
-                        height: 1px;
-                    }
+                    width: 90%;
+                    border-top: 1px solid $black;
                 }
 
                 .sign-left {
@@ -264,17 +256,7 @@
                 .sign-right {
                     position: relative;
                     width: 50%;
-
-                    &::before {
-                        content: "";
-                        background-color: $black;
-                        display: block;
-                        width: 1px;
-                        left: -4px;
-                        height: 100%;
-                        position: absolute;
-                        top: 0;
-                    }
+                    border-left: 1px solid $black;
                 }
             }
         }

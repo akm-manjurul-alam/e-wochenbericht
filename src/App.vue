@@ -42,6 +42,7 @@
 
     @media print {
         html, body {
+            font-family: Arial;
             width: 210mm;
             height: 297mm;
         }

@@ -30,18 +30,20 @@
                     </select>
                 </p>
             </div>
-            <form class="tatigkeit-wrapper">
+            <div class="tatigkeit-wrapper">
                 <p>Betriebliche Tätigkeit</p>
-                <input type="text" id="text-tatigkeit" class="tatigkeit-detail">
-                ****autocomplete.php must be done here & other text blocks
-            </form>
+                <div id="text-tatigkeit" class="tatigkeit-detail" contenteditable>
+                </div>
+            </div>
             <div class="sonstige-wrapper">
                 <p>Unterweisungen, betrieblicher Unterricht, sonstige Schulungen</p>
-                <input type="text" id="text-sonstige" class="sonstige-detail">
+                <div id="text-sonstige" class="sonstige-detail" contenteditable></div>
             </div>
-            <div class="schule-wrapper">
+            <div class="schule-wrapper" id="schule-input">
                 <p>Berufsschule (Unterrrichtsthemen)</p>
-                <input type="text" id="text-schule" class="schule-detail">
+                <div id="text-schule" class="schule-detail" contenteditable>
+                </div>
+                ****autocomplete.php must be done here
             </div>
             <div class="sign-wrapper">
                 <div class="sign-left signed">
@@ -69,10 +71,14 @@
 
 <script>
     import DatePicker from 'vue2-datepicker'
+    import $ from 'jquery';
+    import fitty from 'fitty';
 
     export default {
         name: "Body",
-        components: {DatePicker},
+        components: {
+            DatePicker,
+        },
         data() {
             return {
                 time1: '',
@@ -103,6 +109,18 @@
                     end: '23:30'
                 }
             }
+        },
+        mounted() {
+            this.adaptHeight();
+        },
+        methods: {
+            adaptHeight() {
+                fitty('#text-schule', {
+                    minSize: 14,
+                    maxSize: 72,
+                    multiLine: true,
+                });
+            }
         }
     }
 </script>
@@ -130,6 +148,7 @@
         b {
             font-size: 14px;
         }
+
         font-size: 12px;
         margin: 2px;
     }
@@ -202,8 +221,10 @@
                 @include blocks();
 
                 .schule-detail {
-                    @include input-blocks();
-
+                    width: 100%;
+                    height: 228px;
+                    $color: $black;
+                    border: 1px solid $color;
                 }
             }
 

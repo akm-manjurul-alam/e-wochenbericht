@@ -12,6 +12,7 @@
     "jquery": "^3.3.1",
     "v2-datepicker": "^3.1.1",
     "vue": "^2.6.6",
+    "vue-resize-text": "^0.1.0",
     "vue-responsive-components": "^0.2.3",
     "vue-router": "^3.0.1",
     "vue2-datepicker": "^2.10.0",
@@ -27,8 +28,9 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
-    "node-sass": "^4.9.0",
+    "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
-    "vue-template-compiler": "^2.5.21"
+    "vue-template-compiler": "^2.5.21",
+    "webpack": "^4.35.3"
   }
 }

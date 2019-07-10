@@ -1,15 +1,18 @@
 <template>
     <div class="section-container">
-        <section class="blocks">
+        <form class="blocks">
             <div class="title-wrapper">
-                <p class="name"><b>Name, Vorname:</b> <input type="text" id="text-name" class="title-detail name-box">
+                <p class="name"><b>Name, Vorname:</b>
+                    <input type="text" id="text-name" class="title-detail name-box">
                 </p>
-                <p class="ausbildungnachweis"><b>Ausbildungsnachweis</b> Nr. <input type="text" id="text-ausnr"
-                                                                                    class="title-detail ausbildung-box">
-                    für die Woche vom
+                <p class="ausbildungnachweis"><b>Ausbildungsnachweis</b>
+                    <label class="regular-texts">Nr.</label>
+                    <input type="text" id="text-ausnr"
+                           class="title-detail ausbildung-box">
+                    <label class="regular-texts">für die Woche vom</label>
                     <date-picker v-model="time1" lang="en" :not-before="new Date()" format="DD.MM.YYYY"
                                  width="130px"></date-picker>
-                    bis
+                    <label class="regular-texts">bis</label>
                     <date-picker v-model="time2" lang="en" :not-before="new Date()" format="DD.MM.YYYY"
                                  width="130px"></date-picker>
                 </p>
@@ -20,27 +23,26 @@
                         <option value="Systemintegration">Fachinformatiker für Systemintegration</option>
                         <option value="Systementwicklung" selected>Programmierung und Systementwicklung</option>
                     </select>
-                    Ausbildungsjahr:
+                    <label class="regular-texts">Ausbildungsjahr:</label>
                     <!--<input type="text" id="text-zeit" class="title-detail ausjahr-box">-->
                     <select autofocus name="jahres" id="text-zeit" class="title-detail ausjahr-box">
                         <option value="1" selected>1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
-                        <option value="4">4</option>
                     </select>
                 </p>
             </div>
             <div class="tatigkeit-wrapper">
-                <p>Betriebliche Tätigkeit</p>
+                <h3>Betriebliche Tätigkeit</h3>
                 <div id="text-tatigkeit" class="tatigkeit-detail" contenteditable>
                 </div>
             </div>
             <div class="sonstige-wrapper">
-                <p>Unterweisungen, betrieblicher Unterricht, sonstige Schulungen</p>
+                <h3>Unterweisungen, betrieblicher Unterricht, sonstige Schulungen</h3>
                 <div id="text-sonstige" class="sonstige-detail" contenteditable></div>
             </div>
             <div class="schule-wrapper" id="schule-input">
-                <p>Berufsschule (Unterrrichtsthemen)</p>
+                <h3>Berufsschule (Unterrichtsthemen)</h3>
                 <div id="text-schule" class="schule-detail" contenteditable>
                 </div>
                 ****autocomplete.php must be done here
@@ -65,7 +67,7 @@
                     </p>
                 </div>
             </div>
-        </section>
+        </form>
     </div>
 </template>
 
@@ -73,11 +75,16 @@
     import DatePicker from 'vue2-datepicker'
     import $ from 'jquery';
     import fitty from 'fitty';
+    import Vue from 'vue';
+    import VueResizeText from 'vue-resize-text';
+
+    Vue.use(VueResizeText)
 
     export default {
         name: "Body",
         components: {
             DatePicker,
+            $,
         },
         data() {
             return {
@@ -131,7 +138,7 @@
     @import "mixins";
 
     h3 {
-        margin: 40px 0 0;
+        @include font-bold();
     }
 
     ul {
@@ -170,6 +177,7 @@
         .blocks {
             .title-wrapper {
                 @include blocks();
+                border-bottom: 1px solid $black;
 
                 .name {
                     .name-box {
@@ -182,11 +190,23 @@
                         text-align: center;
                         width: 60px;
                     }
+
+                    .regular-texts {
+                        @include regular-text();
+                        margin: 10px;
+                    }
                 }
 
                 .abteilung {
+                    @include font-regular();
+
                     .abteilung-box {
                         width: 290px;
+                    }
+
+                    .regular-texts {
+                        @include regular-text();
+                        margin: 10px;
                     }
 
                     .ausjahr-box {
@@ -204,27 +224,45 @@
             .tatigkeit-wrapper {
                 @include blocks();
 
+                h3 {
+                    border-bottom: 1px solid $black;
+                    padding: 2px 0 2px 5px;
+                    margin: 0 auto;
+                }
+
                 .tatigkeit-detail {
-                    @include input-blocks();
+                    @include input-text();
+                    @include block-size();
                 }
             }
 
             .sonstige-wrapper {
                 @include blocks();
 
+                h3 {
+                    border-bottom: 1px solid $black;
+                    padding: 2px 0 2px 5px;
+                    margin: 0 auto;
+                }
+
                 .sonstige-detail {
-                    @include input-blocks();
+                    @include input-text();
+                    @include block-size();
                 }
             }
 
             .schule-wrapper {
                 @include blocks();
 
+                h3 {
+                    border-bottom: 1px solid $black;
+                    padding: 2px 0 2px 5px;
+                    margin: 0 auto;
+                }
+
                 .schule-detail {
-                    width: 100%;
-                    height: 228px;
-                    $color: $black;
-                    border-top: 1px solid $color;
+                    @include input-text();
+                    @include block-size();
                 }
             }
 

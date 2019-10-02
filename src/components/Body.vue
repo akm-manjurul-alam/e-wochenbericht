@@ -74,11 +74,6 @@
 <script>
     import DatePicker from 'vue2-datepicker'
     import $ from 'jquery';
-    import fitty from 'fitty';
-    import Vue from 'vue';
-    import VueResizeText from 'vue-resize-text';
-
-    Vue.use(VueResizeText)
 
     export default {
         name: "Body",

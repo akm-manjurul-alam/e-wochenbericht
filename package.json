@@ -1,5 +1,6 @@
 {
   "name": "e-wochenbericht",
+  "author": "Mastermischu",
   "version": "0.1.0",
   "private": true,
   "scripts": {
